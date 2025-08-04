@@ -1,23 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Navigate, Outlet } from 'react-router-dom'
-import { useUser } from '@clerk/clerk-react'
+import { Navigate, Outlet } from 'react-router-dom';
+import { useUser } from '@clerk/clerk-react';
 
 function App() {
-  const [count, setCount] = useState(0)
-  const{user, isLoaded, isSignedIn} = useUser();
+  const { isLoaded, isSignedIn } = useUser();
 
-  if(!isSignedIn){
-    return <Navigate to={'/auth/sign-in'}/>
+  if (!isLoaded) {
+    return <div>Loading...</div>; // prevent rendering before Clerk loads
   }
 
-  return (
-    <>
-    <Outlet/>
-    </>
-  )
+  if (!isSignedIn) {
+    return <Navigate to="/auth/sign-in" />;
+  }
+
+  return <Outlet />;
 }
 
-export default App
+export default App;

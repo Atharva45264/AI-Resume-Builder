@@ -1,11 +1,10 @@
-import React from 'react'
+import { SignIn } from '@clerk/clerk-react';
 
-function SignInPage() {
+export default function SignInPage() {
   return (
-    <div>
-      <SignInPage/>
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }}>
+      <SignIn path="/auth/sign-in" routing="path" />
     </div>
-  )
+  );
 }
 
-export default SignInPage
