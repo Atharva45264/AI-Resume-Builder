@@ -1,10 +1,12 @@
 import { UserButton } from '@clerk/clerk-react'
 import React from 'react'
+import Header from '../components/ui/custom/Header'
 
 function Home() {
   return (
     <div>
-      <UserButton/>
+      <Header/>
+      Landing Screen
     </div>
   )
 }
